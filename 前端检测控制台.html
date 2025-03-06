@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端检测开发者工具是否打开</title>
+</head>
+<body>
+    <script>
+        function check() {
+            debugger;
+            setTimeout(check, 1000);
+        }
+        check();
+    </script>
+
+<button onclick="check()">前端检测开发者工具是否打开</button>
+    
+</body>
+</html>
