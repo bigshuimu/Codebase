@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>前端检测开发者工具是否打开</title>
 </head>
+
 <body>
-    <script>
+    <!-- 使用debugger阻止调试 -->
+    <!--     <script>
         function check() {
             debugger;
             setTimeout(check, 1000);
         }
         check();
     </script>
+    <button onclick="check()">前端检测开发者工具是否打开</button>
+ -->
 
-<button onclick="check()">前端检测开发者工具是否打开</button>
-    
+    <!-- 阻止使用组合键 -->
+    <script>
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                alert('禁止使用ctrl+shift+i组合');
+                e.preventDefault();
+                console.log('禁止使用ctrl+shift+i组合');
+                return false;
+            }
+        });
+    </script>
+
+    <!-- 阻止使用右键 -->
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            console.log('禁止使用右键');
+        });
+    </script>
+
+    <!-- 阻止使用F12 -->
+    <script>
+        window.onkeydown = window.onkeyup = window.onkeypress = function (event) {
+            if (event.keyCode == 123) {
+                alert("禁止使用F12");
+                event.preventDefault();
+                window.event.returnValue = false;
+                console.log('禁止使用F12');
+            }
+        }
+    </script>
+
+    <!-- 高度差检测 -->
+    <script>
+        var lastHeight = window.innerHeight;
+        setInterval(() => {
+            if (lastHeight != window.innerHeight) {
+                alert('高度差检测');
+                console.log('高度差检测');
+            }
+        }, 1000)
+
+    </script>
+
 </body>
+
 </html>
